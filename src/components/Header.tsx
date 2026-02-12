@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -8,6 +8,24 @@ import logo from "@/assets/logo-wijaya.svg";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { label: "About", href: withBase("/#about") },
@@ -17,10 +35,13 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 flex flex-col items-center gap-4 px-4">
+    <header
+      className={`fixed top-4 left-0 right-0 z-50 flex flex-col items-center gap-4 px-4 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-[150%]"
+        }`}
+    >
       {/* Logo - Centered and Upsized */}
       <a href={withBase("/")} className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
-        <img src={logo.src} alt="Wijaya Partners Logo" className="h-20 w-auto" />
+        <img src={logo.src} alt="Wijaya Partners Logo" className="h-10 w-auto" />
       </a>
 
       <nav className="relative container max-w-5xl rounded-full border bg-background/60 backdrop-blur-sm shadow-lg h-16 flex items-center justify-between px-6 w-full">

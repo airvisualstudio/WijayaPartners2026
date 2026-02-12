@@ -38,7 +38,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
 	</head>
 	<body class={fullScreen ? "h-screen overflow-hidden flex flex-col" : "min-h-screen flex flex-col"}>
 		<Header client:load />
-		<main class={fullScreen ? "flex-grow overflow-hidden relative" : "flex-grow relative"}>
+		<main class={fullScreen ? "flex-grow overflow-hidden relative" : "flex-grow relative pt-32"}>
 			<slot />
 			<WhatsAppButton />
 		</main>
