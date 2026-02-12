@@ -23,7 +23,7 @@ export function Header() {
         <img src={logo.src} alt="Wijaya Partners Logo" className="h-20 w-auto" />
       </a>
 
-      <nav className="relative container max-w-5xl rounded-full border bg-background/80 backdrop-blur-md shadow-sm h-16 flex items-center justify-between px-6 w-full">
+      <nav className="relative container max-w-5xl rounded-full border bg-background/60 backdrop-blur-sm shadow-sm h-16 flex items-center justify-between px-6 w-full">
         {/* Empty div to maintain spacing if needed, but justify-between with 1 item pushes it to start/end? */}
         {/* We want Actions on the right. With 1 item, justify-between makes it start. */}
         {/* Let's add an empty div as spacer on the left */}
@@ -66,7 +66,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-36 left-4 right-4 rounded-2xl border bg-background/95 backdrop-blur-md shadow-xl p-4 md:hidden">
+        <div className="absolute top-36 left-4 right-4 rounded-2xl border bg-background/80 backdrop-blur-xl shadow-xl p-4 md:hidden">
           <div className="space-y-4">
             {navItems.map((item) => (
               <a

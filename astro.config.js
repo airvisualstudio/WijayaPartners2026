@@ -26,6 +26,7 @@ import node from '@astrojs/node';
 // });
 
 export default defineConfig({
+  site: 'https://wijayapartners.com',
   server: {
     allowedHosts: ['.ngrok-free.dev'], // Allows all ngrok subdomains
   },

@@ -25,7 +25,7 @@ export function Hero({ heading, headingHighlight, subheading }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative overflow-hidden h-full flex items-center justify-center">
+    <section className="relative overflow-hidden min-h-[100dvh] flex items-center justify-center w-full">
       {/* Background Slider */}
       <div className="absolute inset-0 -z-20">
         <AnimatePresence mode="popLayout">

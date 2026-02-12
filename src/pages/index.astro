@@ -12,7 +12,7 @@ const reader = createReader(process.cwd(), keystaticConfig);
 const homepageData = await reader.singletons.homepage.read();
 ---
 
-<Layout fullScreen={true}>
+<Layout title="Wijaya Partners | Commercial Litigation & Advisory" fullScreen={true}>
 	<Hero 
 		client:load 
 		heading={homepageData?.heroHeading}
