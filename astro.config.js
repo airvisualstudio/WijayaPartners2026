@@ -3,6 +3,12 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
+import keystatic from '@keystatic/astro';
+
+import markdoc from '@astrojs/markdoc';
+
+
+import node from '@astrojs/node';
 
 
 // https://astro.build/config
@@ -23,15 +29,16 @@ export default defineConfig({
   server: {
     allowedHosts: ['.ngrok-free.dev'], // Allows all ngrok subdomains
   },
+
   devToolbar: {
     enabled: false
   },
-  integrations: [
-    react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    sitemap(),
-    mdx()
-  ]
+
+  integrations: [react(), tailwind({
+    applyBaseStyles: false,
+  }), sitemap(), mdx(), markdoc(), keystatic()],
+
+  adapter: node({
+    mode: 'standalone'
+  })
 });

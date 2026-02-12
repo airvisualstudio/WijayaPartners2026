@@ -8,7 +8,13 @@ const backgrounds = [
   gdMerdeka.src,
 ];
 
-export function Hero() {
+interface HeroProps {
+  heading?: string;
+  headingHighlight?: string;
+  subheading?: string;
+}
+
+export function Hero({ heading, headingHighlight, subheading }: HeroProps) {
   const [currentBg, setCurrentBg] = useState(0);
 
   useEffect(() => {
@@ -58,9 +64,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl drop-shadow-sm"
           >
-            Absolute Loyalty.{" "}
+            {heading || "Absolute Loyalty."}{" "}
             <span className="bg-gradient-to-r from-zinc-900 via-red-600 to-zinc-900 dark:from-black-400 dark:via-red-400 dark:to-zinc-400 bg-clip-text text-transparent animate-gradient">
-              Strategic Action
+              {headingHighlight || "Strategic Action"}
             </span>
           </motion.h1>
 
@@ -71,7 +77,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-black dark:text-white max-w-2xl"
           >
-            Since 1988, Wijaya & Partners has served as a dedicated legal guardian from our base in Bandung, providing sophisticated commercial litigation and advisory for local enterprises and global partners alike.
+            {subheading || "Since 1988, Wijaya & Partners has served as a dedicated legal guardian from our base in Bandung, providing sophisticated commercial litigation and advisory for local enterprises and global partners alike."}
           </motion.p>
         </div>
       </div>

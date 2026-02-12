@@ -1,0 +1,346 @@
+20:52:16 [content] Syncing content
+20:52:16 [content] Synced content
+20:52:16 [types] Generated 181ms
+20:52:16 [check] Getting diagnostics for Astro files in /home/nygma/domus-somnia/wijaya-partners...
+[96mservice.js[0m:[93m3[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'req' is declared but its value is never read.
+
+[7m3[0m const server = http.createServer((req, res) => {
+[7m [0m [93m                                  ~~~[0m
+[96mservice.js[0m:[93m1[0m:[93m14[0m - [93mwarning[0m[90m ts(80001): [0mFile is a CommonJS module; it may be converted to an ES module.
+
+[7m1[0m const http = require('http');
+[7m [0m [93m             ~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/BentoGrid.tsx[0m:[93m1[0m:[93m10[0m - [91merror[0m[90m ts(1484): [0m'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+
+[7m1[0m import { ReactNode } from "react";
+[7m [0m [91m         ~~~~~~~~~[0m
+
+[96msrc/components/ChatInterface.tsx[0m:[93m172[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'onKeyPress' is deprecated.
+
+[7m172[0m               onKeyPress={handleKeyPress}
+[7m   [0m [93m              ~~~~~~~~~~[0m
+
+[96msrc/components/CommandPalette.tsx[0m:[93m192[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m192[0m                   {items.map((cmd, index) => {
+[7m   [0m [93m                                   ~~~~~[0m
+[96msrc/components/CommandPalette.tsx[0m:[93m2[0m:[93m55[0m - [93mwarning[0m[90m ts(6133): [0m'Moon' is declared but its value is never read.
+
+[7m2[0m import { Search, Home, FileText, Mail, Settings, Sun, Moon, Command } from "lucide-react";
+[7m [0m [93m                                                      ~~~~[0m
+
+[96msrc/components/Footer.tsx[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'withBase' is declared but its value is never read.
+
+[7m3[0m import { withBase } from "@/lib/utils";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/Footer.tsx[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Button' is declared but its value is never read.
+
+[7m2[0m import { Button } from "@/components/ui/button";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/Footer.tsx[0m:[93m1[0m:[93m37[0m - [93mwarning[0m[90m ts(6385): [0m'Linkedin' is deprecated.
+
+[7m1[0m import { Sparkles, Github, Twitter, Linkedin, Mail } from "lucide-react";
+[7m [0m [93m                                    ~~~~~~~~[0m
+[96msrc/components/Footer.tsx[0m:[93m1[0m:[93m28[0m - [93mwarning[0m[90m ts(6385): [0m'Twitter' is deprecated.
+
+[7m1[0m import { Sparkles, Github, Twitter, Linkedin, Mail } from "lucide-react";
+[7m [0m [93m                           ~~~~~~~[0m
+[96msrc/components/Footer.tsx[0m:[93m1[0m:[93m20[0m - [93mwarning[0m[90m ts(6385): [0m'Github' is deprecated.
+
+[7m1[0m import { Sparkles, Github, Twitter, Linkedin, Mail } from "lucide-react";
+[7m [0m [93m                   ~~~~~~[0m
+[96msrc/components/Footer.tsx[0m:[93m1[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m1[0m import { Sparkles, Github, Twitter, Linkedin, Mail } from "lucide-react";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/GlassCard.tsx[0m:[93m1[0m:[93m10[0m - [91merror[0m[90m ts(1484): [0m'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+
+[7m1[0m import { ReactNode } from "react";
+[7m [0m [91m         ~~~~~~~~~[0m
+
+[96msrc/components/GradientText.tsx[0m:[93m1[0m:[93m10[0m - [91merror[0m[90m ts(1484): [0m'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+
+[7m1[0m import { ReactNode } from "react";
+[7m [0m [91m         ~~~~~~~~~[0m
+
+[96msrc/components/Hero.tsx[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m3[0m import { ArrowRight, Sparkles, Zap, Brain } from "lucide-react";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/Hero.tsx[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Button' is declared but its value is never read.
+
+[7m2[0m import { Button } from "@/components/ui/button";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/MagicCard.tsx[0m:[93m1[0m:[93m39[0m - [91merror[0m[90m ts(1484): [0m'MouseEvent' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+
+[7m1[0m import { ReactNode, useRef, useState, MouseEvent } from "react";
+[7m [0m [91m                                      ~~~~~~~~~~[0m
+[96msrc/components/MagicCard.tsx[0m:[93m1[0m:[93m10[0m - [91merror[0m[90m ts(1484): [0m'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+
+[7m1[0m import { ReactNode, useRef, useState, MouseEvent } from "react";
+[7m [0m [91m         ~~~~~~~~~[0m
+
+[96msrc/components/ShimmerButton.tsx[0m:[93m1[0m:[93m10[0m - [91merror[0m[90m ts(1484): [0m'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+
+[7m1[0m import { ReactNode } from "react";
+[7m [0m [91m         ~~~~~~~~~[0m
+
+[96msrc/components/ui/accordion.tsx[0m:[93m41[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m41[0m   React.ElementRef<typeof AccordionPrimitive.Content>,
+[7m  [0m [93m        ~~~~~~~~~~[0m
+[96msrc/components/ui/accordion.tsx[0m:[93m21[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m21[0m   React.ElementRef<typeof AccordionPrimitive.Trigger>,
+[7m  [0m [93m        ~~~~~~~~~~[0m
+[96msrc/components/ui/accordion.tsx[0m:[93m9[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m9[0m   React.ElementRef<typeof AccordionPrimitive.Item>,
+[7m [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/components/ui/avatar.tsx[0m:[93m33[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m33[0m   React.ElementRef<typeof AvatarPrimitive.Fallback>,
+[7m  [0m [93m        ~~~~~~~~~~[0m
+[96msrc/components/ui/avatar.tsx[0m:[93m21[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m21[0m   React.ElementRef<typeof AvatarPrimitive.Image>,
+[7m  [0m [93m        ~~~~~~~~~~[0m
+[96msrc/components/ui/avatar.tsx[0m:[93m6[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m6[0m   React.ElementRef<typeof AvatarPrimitive.Root>,
+[7m [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/components/ui/progress.tsx[0m:[93m6[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m6[0m   React.ElementRef<typeof ProgressPrimitive.Root>,
+[7m [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/components/ui/switch.tsx[0m:[93m6[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m6[0m   React.ElementRef<typeof SwitchPrimitives.Root>,
+[7m [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/components/ui/tabs.tsx[0m:[93m38[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m38[0m   React.ElementRef<typeof TabsPrimitive.Content>,
+[7m  [0m [93m        ~~~~~~~~~~[0m
+[96msrc/components/ui/tabs.tsx[0m:[93m23[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m23[0m   React.ElementRef<typeof TabsPrimitive.Trigger>,
+[7m  [0m [93m        ~~~~~~~~~~[0m
+[96msrc/components/ui/tabs.tsx[0m:[93m8[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m8[0m   React.ElementRef<typeof TabsPrimitive.List>,
+[7m [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/components/ui/tooltip.tsx[0m:[93m12[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'ElementRef' is deprecated.
+
+[7m12[0m   React.ElementRef<typeof TooltipPrimitive.Content>,
+[7m  [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/pages/404.astro[0m:[93m48[0m:[93m18[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m48[0m       <ArrowLeft class="h-4 w-4" />
+[7m  [0m [91m                 ~~~~~[0m
+[96msrc/pages/404.astro[0m:[93m41[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m41[0m       <Home class="h-4 w-4" />
+[7m  [0m [91m            ~~~~~[0m
+[96msrc/pages/404.astro[0m:[93m21[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m21[0m         <Search class="h-24 w-24 md:h-32 md:w-32 text-purple-600 dark:text-purple-400 relative" />
+[7m  [0m [91m                ~~~~~[0m
+
+[96msrc/pages/about.astro[0m:[93m76[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m76[0m        <Heart class="h-6 w-6 text-white" />
+[7m  [0m [91m              ~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m65[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m65[0m        <Users class="h-6 w-6 text-white" />
+[7m  [0m [91m              ~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m54[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m54[0m        <Zap class="h-6 w-6 text-white" />
+[7m  [0m [91m            ~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m43[0m:[93m16[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m43[0m        <Target class="h-6 w-6 text-white" />
+[7m  [0m [91m               ~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'motion' is declared but its value is never read.
+
+[7m3[0m import { motion } from 'framer-motion';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/changelog.astro[0m:[93m196[0m:[93m18[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m196[0m        <Sparkles class="h-4 w-4 text-muted-foreground" />
+[7m   [0m [91m                 ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m180[0m:[93m16[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m180[0m           <Bug class="h-4 w-4" />
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m168[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m168[0m           <Wrench class="h-4 w-4" />
+[7m   [0m [91m                  ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m156[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m156[0m           <Plus class="h-4 w-4" />
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m138[0m:[93m16[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m138[0m        <Shield class="h-4 w-4 text-muted-foreground" />
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m122[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m122[0m           <Wrench class="h-4 w-4" />
+[7m   [0m [91m                  ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m109[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m109[0m           <Plus class="h-4 w-4" />
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m91[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m91[0m        <Zap class="h-4 w-4 text-muted-foreground" />
+[7m  [0m [91m            ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m76[0m:[93m16[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m76[0m           <Bug class="h-4 w-4" />
+[7m  [0m [91m               ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m64[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m64[0m           <Wrench class="h-4 w-4" />
+[7m  [0m [91m                  ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m51[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m51[0m           <Plus class="h-4 w-4" />
+[7m  [0m [91m                ~~~~~[0m
+[96msrc/pages/changelog.astro[0m:[93m30[0m:[93m18[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m30[0m        <Sparkles class="h-4 w-4 text-primary-foreground" />
+[7m  [0m [91m                 ~~~~~[0m
+
+[96msrc/pages/contact.astro[0m:[93m119[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m119[0m         <MapPin class="h-6 w-6 text-white" />
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m110[0m:[93m16[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m110[0m         <Phone class="h-6 w-6 text-white" />
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m101[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m101[0m         <Mail class="h-6 w-6 text-white" />
+[7m   [0m [91m              ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m90[0m:[93m16[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m90[0m          <Send class="h-4 w-4" />
+[7m  [0m [91m               ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Button' is declared but its value is never read.
+
+[7m3[0m import { Button } from '@/components/ui/button';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/index.astro[0m:[93m22[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'homepageData'.
+
+[7m22[0m   subheading={homepageData?.heroSubheading}
+[7m  [0m [91m              ~~~~~~~~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m21[0m:[93m21[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'homepageData'.
+
+[7m21[0m   headingHighlight={homepageData?.heroHeadingHighlight}
+[7m  [0m [91m                    ~~~~~~~~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m20[0m:[93m12[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'homepageData'.
+
+[7m20[0m   heading={homepageData?.heroHeading}
+[7m  [0m [91m           ~~~~~~~~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m10[0m:[93m10[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createReader'.
+
+[7m10[0m import { createReader } from '@keystatic/core/reader';
+[7m  [0m [91m         ~~~~~~~~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m7[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'FAQ' is declared but its value is never read.
+
+[7m7[0m import { FAQ } from '@/components/FAQ';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m6[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Testimonials' is declared but its value is never read.
+
+[7m6[0m import { Testimonials } from '@/components/Testimonials';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m5[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Pricing' is declared but its value is never read.
+
+[7m5[0m import { Pricing } from '@/components/Pricing';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m4[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Features' is declared but its value is never read.
+
+[7m4[0m import { Features } from '@/components/Features';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/blog/getting-started-with-ai.astro[0m:[93m52[0m:[93m16[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m52[0m        <Share2 class="h-4 w-4" />
+[7m  [0m [91m               ~~~~~[0m
+[96msrc/pages/blog/getting-started-with-ai.astro[0m:[93m26[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m26[0m        <Clock class="h-4 w-4" />
+[7m  [0m [91m              ~~~~~[0m
+[96msrc/pages/blog/getting-started-with-ai.astro[0m:[93m22[0m:[93m18[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m22[0m        <Calendar class="h-4 w-4" />
+[7m  [0m [91m                 ~~~~~[0m
+[96msrc/pages/blog/getting-started-with-ai.astro[0m:[93m14[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m14[0m      <ArrowLeft class="h-4 w-4" />
+[7m  [0m [91m                ~~~~~[0m
+
+[96msrc/pages/blog/index.astro[0m:[93m127[0m:[93m22[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m127[0m          <ArrowRight class="h-4 w-4" />
+[7m   [0m [91m                     ~~~~~[0m
+[96msrc/pages/blog/index.astro[0m:[93m112[0m:[93m18[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m112[0m           <Clock class="h-4 w-4" />
+[7m   [0m [91m                 ~~~~~[0m
+[96msrc/pages/blog/index.astro[0m:[93m104[0m:[93m21[0m - [91merror[0m[90m ts(2322): [0mType '{ class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'. Did you mean 'className'?
+
+[7m104[0m           <Calendar class="h-4 w-4" />
+[7m   [0m [91m                    ~~~~~[0m
+
+Result (67 files): 
+- 40 errors
+- 0 warnings
+- 31 hints
+
