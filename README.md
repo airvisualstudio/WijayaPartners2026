@@ -1,237 +1,96 @@
-# 🚀 GenAI Startup Astro Theme
+# Wijaya & Partners
 
-A modern, beautiful, and **completely free** Astro theme template designed specifically for GenAI and AI-focused startups. Features a stunning dark/light mode toggle, smooth animations, and ready-to-deploy components.
+<div align="center">
+  <p><strong>Absolute Loyalty. Strategic Action.</strong></p>
+  <p>Dedicated legal guardian for local enterprises and global partners.</p>
+</div>
 
-![GenAI Theme](https://img.shields.io/badge/Astro-5.16-blueviolet) ![License](https://img.shields.io/badge/license-MIT-green) ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)
+---
 
-<img width="3809" height="2327" alt="Screenshot of GenAI Startup Homepage" src="https://github.com/user-attachments/assets/b086ecf1-1f3a-495c-927e-f940b88fc757" />
+## 🏛️ About Us
+
+Since 1988, **Wijaya & Partners** has served as a dedicated legal guardian from our base in Bandung. We provide sophisticated commercial litigation and advisory services, blending deep local knowledge with global standards to protect and advance our clients' interests.
 
 ## ✨ Features
 
-- 🎨 **Beautiful Design** - Modern, clean UI with gradient accents and smooth animations
-- 🌓 **Dark/Light Mode** - Fully functional theme toggle with localStorage persistence
-- ⚡ **Lightning Fast** - Built with Astro for optimal performance
-- 📱 **Fully Responsive** - Perfect on mobile, tablet, and desktop
-- 🎭 **Framer Motion** - Smooth scroll animations and transitions
-- 🧩 **Pre-built Sections**:
-  - Hero with animated gradients
-  - Features showcase
-  - Pricing cards
-  - Testimonials
-  - FAQ with accordion
-  - Newsletter signup
-  - Social links
-- 🎯 **TypeScript** - Full type safety
-- 🎨 **Tailwind CSS v4** - Latest utility-first CSS framework
-- 🧱 **shadcn/ui** - Beautiful, accessible components
-- 🚀 **GitHub Pages Ready** - Deploy with one click
-- ♿ **Accessible** - WCAG compliant components
+- **Modern Design**: A sophisticated, professional aesthetic reflecting our legal expertise.
+- **Responsive Layout**: Fully accessible across desktop, tablet, and mobile devices.
+- **Fast Performance**: Built with Astro for optimal load times and SEO.
+- **Interactive Elements**: Smooth animations and transitions powered by Framer Motion.
 
-## 🎯 Perfect For
+## 🛠️ Technology Stack
 
-- AI/GenAI Startups
-- SaaS Landing Pages
-- API Documentation Sites
-- Developer Tools
-- Tech Product Launches
+This website is built using modern web technologies to ensure performance, reliability, and maintainability:
 
-## 🚀 Quick Start
+- **[Astro](https://astro.build/)**: The web framework for content-driven websites.
+- **[React](https://react.dev/)**: JavaScript library for building user interfaces.
+- **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework for rapid UI development.
+- **[Framer Motion](https://www.framer.com/motion/)**: Production-ready motion library for React.
+- **[shadcn/ui](https://ui.shadcn.com/)**: Re-usable components built using Radix UI and Tailwind CSS.
+- **[TypeScript](https://www.typescriptlang.org/)**: Strongly typed programming language that builds on JavaScript.
 
-### 1. Clone the repository
+## 🚀 Getting Started
 
-```bash
-git clone https://github.com/yourusername/astro-genai-startup-theme.git
-cd astro-genai-startup-theme
-```
+To run this project locally, follow these steps:
 
-### 2. Install dependencies
+### Prerequisites
 
-```bash
-npm install
-```
+- Node.js (v18 or higher)
+- npm or yarn or pnpm
 
-### 3. Start development server
+### Installation
 
-```bash
-npm run dev
-```
+1.  **Clone the repository:**
 
-Visit `http://localhost:4321` to see your site!
+    ```bash
+    git clone https://github.com/your-username/wijaya-partners.git
+    cd wijaya-partners
+    ```
 
-### 4. Build for production
+2.  **Install dependencies:**
 
-```bash
-npm run build
-```
+    ```bash
+    npm install
+    ```
 
-## 📦 What's Included
+3.  **Start development server:**
 
-### Components
+    ```bash
+    npm run dev
+    ```
 
-- **Header** - Responsive navigation with theme toggle
-- **Hero** - Eye-catching hero section with animated gradients and stats
-- **Features** - Grid of feature cards with icons and hover effects
-- **Pricing** - Comparison pricing cards with highlighted popular plan
-- **Testimonials** - Customer testimonials with ratings
-- **FAQ** - Accordion-style frequently asked questions
-- **Footer** - Complete footer with links and newsletter signup
-- **ThemeToggle** - Dark/light mode switcher
+    Visit `http://localhost:4321` to view the site.
 
-### Pages
+### Building for Production
 
-- `index.astro` - Main landing page with all sections
-- `markdown-page.md` - Example markdown page
-
-### Layouts
-
-- `main.astro` - Main layout with header and footer
-
-## 🎨 Customization
-
-### Colors
-
-Edit `src/styles/global.css` to customize your brand colors. The theme uses CSS variables for easy customization:
-
-```css
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.25);
-  /* ... more variables */
-}
-```
-
-### Content
-
-Update the content in the component files:
-- `src/components/Hero.tsx` - Hero section text and stats
-- `src/components/Features.tsx` - Feature list
-- `src/components/Pricing.tsx` - Pricing tiers
-- `src/components/Testimonials.tsx` - Customer reviews
-- `src/components/FAQ.tsx` - Questions and answers
-
-### Branding
-
-Replace the logo and brand name in:
-- `src/components/Header.tsx`
-- `src/components/Footer.tsx`
-- `src/layouts/main.astro` (page title)
-
-## 🚀 Deploy to GitHub Pages
-
-### Automatic Deployment
-
-This theme includes a GitHub Actions workflow for automatic deployment:
-
-1. Update `astro.config.js` with your repository details:
-```js
-export default defineConfig({
-  site: 'https://yourusername.github.io',
-  base: '/your-repo-name',
-  // ...
-});
-```
-
-2. Push to your repository:
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-3. Enable GitHub Pages in your repository settings:
-   - Go to Settings → Pages
-   - Source: GitHub Actions
-
-4. Your site will be automatically deployed on every push!
-
-### Manual Deployment
+To create a production build:
 
 ```bash
 npm run build
-# Upload the contents of the dist/ folder to your hosting provider
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
 ```
 
 ## 📁 Project Structure
 
-```
+```text
 /
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Pages deployment
-├── public/
-│   └── favicon.svg
+├── public/             # Static assets
 ├── src/
-│   ├── components/
-│   │   ├── ui/                 # shadcn/ui components
-│   │   │   ├── accordion.tsx
-│   │   │   └── button.tsx
-│   │   ├── FAQ.tsx
-│   │   ├── Features.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Header.tsx
-│   │   ├── Hero.tsx
-│   │   ├── Pricing.tsx
-│   │   ├── Testimonials.tsx
-│   │   └── ThemeToggle.tsx
-│   ├── layouts/
-│   │   └── main.astro
-│   ├── lib/
-│   │   └── utils.ts
-│   ├── pages/
-│   │   └── index.astro
-│   └── styles/
-│       └── global.css
-├── astro.config.js
-├── components.json
-├── package.json
-├── tailwind.config.mjs
-├── tsconfig.json
-└── TODO.md                     # Development progress tracker
+│   ├── components/     # React components (UI, features)
+│   ├── layouts/        # Astro layouts
+│   ├── pages/          # Astro pages (routing)
+│   ├── styles/         # Global styles
+│   └── lib/            # Utility functions
+├── astro.config.mjs    # Astro configuration
+├── tailwind.config.mjs # Tailwind CSS configuration
+└── package.json        # Project dependencies and scripts
 ```
-
-## 🛠️ Tech Stack
-
-- **[Astro 5.16](https://astro.build/)** - Static site generator
-- **[React 19](https://react.dev/)** - UI components
-- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-- **[Tailwind CSS 4](https://tailwindcss.com/)** - Styling
-- **[shadcn/ui](https://ui.shadcn.com/)** - Component library
-- **[Framer Motion](https://www.framer.com/motion/)** - Animations
-- **[Lucide Icons](https://lucide.dev/)** - Icon library
-- **[Radix UI](https://www.radix-ui.com/)** - Accessible primitives
-
-## 📝 Available Scripts
-
-```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run astro        # Run Astro CLI commands
-```
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/astro-genai-startup-theme/issues).
 
 ## 📄 License
 
-MIT License - feel free to use this template for your own projects!
-
-Copyright (c) 2025
-
-## 🙏 Credits
-
-- Inspired by modern SaaS landing pages
-- Components inspired by [reactbits.dev](https://reactbits.dev)
-- Built with love for the GenAI community
-
-## 💖 Support
-
-If you find this template useful, please consider:
-- ⭐ Starring the repository
-- 🐦 Sharing on Twitter
-- 📝 Writing a blog post about it
-
----
-
-**Built with ❤️ for the GenAI community**
+This project is proprietary to Wijaya & Partners. All rights reserved.
