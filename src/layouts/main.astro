@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { CommandPalette } from '@/components/CommandPalette';
+import { CookieConsent } from '@/components/CookieConsent';
+const { title = "WijayaPartners - ", fullScreen = false } = Astro.props;
+import { SEOMetadata } from 'astro-seo-metadata';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+
+		<!-- All properties are optional -->
+		<SEOMetadata
+			siteName={'Le Website'}
+			title={'Le cool title'}
+			description={'Le insightful description'}
+			image={'http://example.com/the_image_url-preferably_absolute.jpg'}
+			favicon={'/favicon.svg'}
+			author="Julian Cataldo"
+			copyright="ISC"
+			astroSitemap={true}
+			canonicalUrl={Astro.url.toString()}
+			type={'website'}
+			astroGenerator={true}
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+	</head>
+	<body class={fullScreen ? "h-screen overflow-hidden flex flex-col" : "min-h-screen flex flex-col"}>
+		<Header client:load />
+		<main class={fullScreen ? "flex-grow overflow-hidden relative" : "flex-grow relative"}>
+			<slot />
+			<WhatsAppButton />
+		</main>
+		<Footer />
+		<CommandPalette client:load />
+		<CookieConsent client:load />
+	</body>
+</html>

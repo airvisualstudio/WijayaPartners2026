@@ -1,0 +1,38 @@
+---
+// src/components/WhatsAppButton.astro
+const phoneNumber = '628986000822'; // Replace with your number (international format)
+const message = 'Hello, I have a question!'; // Optional pre-filled message
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+---
+
+<a href={whatsappUrl} class="whatsapp-button" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
+
+<style>
+  .whatsapp-button {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    z-index: 9999;
+    width: 50px;
+    height: 50px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .whatsapp-button img {
+    width: 35px;
+    height: 35px;
+  }
+</style>
