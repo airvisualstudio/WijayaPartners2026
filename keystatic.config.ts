@@ -13,6 +13,11 @@ export default config({
                 heroHeading: fields.text({ label: 'Hero Heading' }),
                 heroHeadingHighlight: fields.text({ label: 'Hero Heading Highlight' }),
                 heroSubheading: fields.text({ label: 'Hero Subheading', multiline: true }),
+                heroBackgroundImage: fields.image({
+                    label: 'Hero Background Image',
+                    directory: 'src/assets/hero-images',
+                    publicPath: '@/assets/hero-images',
+                }),
             },
         }),
     },

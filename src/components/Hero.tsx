@@ -4,17 +4,15 @@ import { ArrowRight, Sparkles, Zap, Brain } from "lucide-react";
 import { useState, useEffect } from "react";
 import gdMerdeka from "@/assets/gdmerdeka.jpg";
 
-const backgrounds = [
-  gdMerdeka.src,
-];
-
 interface HeroProps {
   heading?: string;
   headingHighlight?: string;
   subheading?: string;
+  backgroundImage?: string | null;
 }
 
-export function Hero({ heading, headingHighlight, subheading }: HeroProps) {
+export function Hero({ heading, headingHighlight, subheading, backgroundImage }: HeroProps) {
+  const backgrounds = backgroundImage ? [backgroundImage] : [gdMerdeka.src];
   const [currentBg, setCurrentBg] = useState(0);
 
   useEffect(() => {
@@ -22,7 +20,7 @@ export function Hero({ heading, headingHighlight, subheading }: HeroProps) {
       setCurrentBg((prev) => (prev + 1) % backgrounds.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [backgrounds.length]);
 
   return (
     <section className="relative overflow-hidden min-h-[100dvh] flex items-center justify-center w-full">
@@ -35,13 +33,11 @@ export function Hero({ heading, headingHighlight, subheading }: HeroProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
-            className="absolute inset-0"
-          >
+            className="absolute inset-0">
             <img
               src={backgrounds[currentBg]}
               alt="Background"
-              className="w-full h-full object-cover grayscale opacity-70"
-            />
+              className="w-full h-full object-cover grayscale opacity-70" />
             {/* Overlay for readability */}
             <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] bg-gradient-to-b from-background/60 via-background/20 to-background/90" />
           </motion.div>
@@ -75,7 +71,7 @@ export function Hero({ heading, headingHighlight, subheading }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-black dark:text-white max-w-2xl"
+            className="text-lg md:text-xl font-medium text-zinc dark:text-white max-w-2xl"
           >
             {subheading || "Since 1988, Wijaya & Partners has served as a dedicated legal guardian from our base in Bandung, providing sophisticated commercial litigation and advisory for local enterprises and global partners alike."}
           </motion.p>

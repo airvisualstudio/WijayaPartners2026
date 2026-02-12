@@ -10,6 +10,20 @@ import { FAQ } from '@/components/FAQ';
 
 const reader = createReader(process.cwd(), keystaticConfig);
 const homepageData = await reader.singletons.homepage.read();
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/hero-images/*');
+const resolveImage = async (imagePath: string | undefined) => {
+  if (!imagePath) return null;
+  const key = imagePath.replace('@/', '/src/');
+  const loader = images[key];
+  if (!loader) {
+      console.warn(`Image not found for path: ${imagePath} (key: ${key})`);
+      return null;
+  }
+  const mod = await loader();
+  return mod.default.src;
+};
+const heroBgImage = await resolveImage(homepageData?.heroBackgroundImage);
 ---
 
 <Layout title="Wijaya Partners | Commercial Litigation & Advisory" fullScreen={true}>
@@ -18,5 +32,6 @@ const homepageData = await reader.singletons.homepage.read();
 		heading={homepageData?.heroHeading}
 		headingHighlight={homepageData?.heroHeadingHighlight}
 		subheading={homepageData?.heroSubheading}
+        backgroundImage={heroBgImage}
 	/>
 </Layout>
