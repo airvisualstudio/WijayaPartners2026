@@ -7,6 +7,26 @@ import { CookieConsent } from '@/components/CookieConsent';
 const { title = "WijayaPartners - ", fullScreen = false } = Astro.props;
 import { SEOMetadata } from 'astro-seo-metadata';
 import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import { getEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import defaultLogo from '@/assets/logo/logo.svg';
+
+const settings = await getEntry('settings', 'index');
+const logoSetting = settings?.data?.logo;
+
+let logo = defaultLogo.src;
+
+if (logoSetting) {
+  // Map the Keystatic path (@/assets/...) to the Vite glob path (/src/assets/...)
+  const globPath = logoSetting.replace('@', '/src');
+  const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,webp,svg}');
+  
+  if (images[globPath]) {
+    const imageModule = await images[globPath]();
+    const optimizedLogo = await getImage({ src: imageModule.default, format: 'webp' });
+    logo = optimizedLogo.src;
+  }
+} 
 ---
 
 <html lang="en">
@@ -37,7 +57,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
 		<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 	</head>
 	<body class={fullScreen ? "h-screen overflow-hidden flex flex-col" : "min-h-screen flex flex-col"}>
-		<Header client:load />
+		<Header client:load logo={logo} />
 		<main class={fullScreen ? "flex-grow overflow-hidden relative" : "flex-grow relative pt-32"}>
 			<slot />
 			<WhatsAppButton />

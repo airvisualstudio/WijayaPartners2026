@@ -20,6 +20,20 @@ export default config({
                 }),
             },
         }),
+        settings: singleton({
+            label: 'Settings',
+            path: 'src/content/settings/index',
+            schema: {
+                logo: fields.image({
+                    label: 'Logo',
+                    directory: 'src/assets/logo',
+                    publicPath: '@/assets/logo',
+                    validation: {
+                        isRequired: true,
+                    },
+                }),
+            },
+        }),
     },
     collections: {
         posts: collection({

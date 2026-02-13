@@ -61,7 +61,7 @@ export function Hero({ heading, headingHighlight, subheading, backgroundImage }:
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl drop-shadow-sm"
           >
             {heading || "Absolute Loyalty."}{" "}
-            <span className="bg-gradient-to-r from-zinc-900 via-red-600 to-zinc-900 dark:from-black-400 dark:via-red-600 dark:to-zinc-400 bg-clip-text text-transparent animate-gradient">
+            <span className="bg-gradient-to-r from-zinc-900 via-red-600 to-zinc-900 dark:from-white-600 dark:via-red-600 dark:to-white-900 bg-clip-text text-transparent animate-gradient">
               {headingHighlight || "Strategic Action"}
             </span>
           </motion.h1>

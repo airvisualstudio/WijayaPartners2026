@@ -11,6 +11,9 @@ import markdoc from '@astrojs/markdoc';
 import node from '@astrojs/node';
 
 
+import partytown from '@astrojs/partytown';
+
+
 // https://astro.build/config
 // export default defineConfig({
 //   site: 'https://ctrimm.github.io',
@@ -32,12 +35,12 @@ export default defineConfig({
   },
 
   devToolbar: {
-    enabled: false
+    enabled: true
   },
 
   integrations: [react(), tailwind({
     applyBaseStyles: false,
-  }), sitemap(), mdx(), markdoc(), keystatic()],
+  }), sitemap(), mdx(), markdoc(), keystatic(), partytown()],
 
   adapter: node({
     mode: 'standalone'

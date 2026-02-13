@@ -4,23 +4,20 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { withBase } from "@/lib/utils";
 
-import logo from "@/assets/logo-wijaya.svg";
+import logoDefault from "@/assets/logo-wijaya.svg";
 
-export function Header() {
+interface HeaderProps {
+  logo?: string;
+}
+
+export function Header({ logo = logoDefault.src }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      lastScrollY.current = currentScrollY;
+      setIsScrolled(currentScrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -31,17 +28,21 @@ export function Header() {
     { label: "About", href: withBase("/#about") },
     { label: "Our Teams", href: withBase("/#teams") },
     { label: "Our Projects", href: withBase("/#projects") },
-    { label: "Contact", href: withBase("/#contact") },
+    { label: "Contact", href: withBase("/contact") },
   ];
 
   return (
     <header
-      className={`fixed top-4 left-0 right-0 z-50 flex flex-col items-center gap-4 px-4 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-[150%]"
-        }`}
+      className={`fixed top-4 left-0 right-0 z-50 flex flex-col items-center ${isScrolled ? "gap-0" : "gap-4"} px-4 transition-all duration-300 transform`}
     >
       {/* Logo - Centered and Upsized */}
-      <a href={withBase("/")} className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
-        <img src={logo.src} alt="Wijaya Partners Logo" className="h-10 w-auto" />
+      {/* Logo - Centered and Upsized */}
+      <a
+        href={withBase("/")}
+        className={`flex items-center space-x-3 hover:opacity-90 transition-all duration-300 origin-center ${isScrolled ? "h-0 opacity-0 overflow-hidden scale-0 mb-0" : "h-20 opacity-100 scale-100"
+          }`}
+      >
+        <img src={logo} alt="Wijaya Partners Logo" className="h-full w-auto" />
       </a>
 
       <nav className="relative container max-w-5xl rounded-full border bg-background/60 backdrop-blur-sm shadow-lg h-16 flex items-center justify-between px-6 w-full">
@@ -99,7 +100,7 @@ export function Header() {
                 {item.label}
               </a>
             ))}
-            <Button className="w-full rounded-full">Contact Us</Button>
+            {/* <Button className="w-full rounded-full">Contact Us</Button> */}
           </div>
         </div>
       )}

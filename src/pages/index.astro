@@ -11,6 +11,8 @@ import { FAQ } from '@/components/FAQ';
 const reader = createReader(process.cwd(), keystaticConfig);
 const homepageData = await reader.singletons.homepage.read();
 
+import { getImage } from 'astro:assets';
+
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/hero-images/*');
 const resolveImage = async (imagePath: string | undefined) => {
   if (!imagePath) return null;
@@ -21,7 +23,8 @@ const resolveImage = async (imagePath: string | undefined) => {
       return null;
   }
   const mod = await loader();
-  return mod.default.src;
+  const optimized = await getImage({ src: mod.default, format: 'webp', width: 1920 });
+  return optimized.src;
 };
 const heroBgImage = await resolveImage(homepageData?.heroBackgroundImage);
 ---
