@@ -1,0 +1,98 @@
+---
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
+import Layout from '../../layouts/main.astro';
+import { GradientText } from '@/components/GradientText';
+import { withBase } from "@/lib/utils";
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const teams = await reader.collections.teams.all();
+
+import { getImage } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/teams/*');
+
+const resolveImage = async (imagePath: string | undefined) => {
+  if (!imagePath) return null;
+  const key = imagePath.replace('@/', '/src/');
+  const loader = images[key];
+  if (!loader) return null;
+  const mod = await loader();
+  const optimized = await getImage({ src: mod.default, format: 'webp', width: 800 });
+  return optimized.src;
+};
+
+const resolvedTeams = await Promise.all(
+  teams.map(async (member) => {
+    return {
+      ...member,
+      profileImageUrl: await resolveImage(member.entry.profileImage || undefined),
+    };
+  })
+);
+---
+
+<Layout 
+    title="Our Legal Professionals | Wijaya Partners" 
+    description="Meet our team of experienced legal professionals dedicated to excellence in commercial litigation and legal advisory."
+>
+	<section class="relative py-24 md:py-40 bg-background overflow-hidden">
+        {/* Background Decorative Blur */}
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 -z-10"></div>
+        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] translate-y-1/2 -z-10"></div>
+
+		<div class="container mx-auto px-4 relative">
+			<div class="max-w-4xl mx-auto text-center mb-20">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-6">
+                    Our People
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 bg-clip-text">
+					Excellence in <br />
+                    <GradientText>Legal Advocacy</GradientText>
+				</h1>
+				<p class="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+					Led by seasoned practitioners with a proven track record in complex commercial disputes and strategic advisory across Indonesia.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+				{resolvedTeams.map((member) => (
+					<a 
+                        href={withBase(`/teams/${member.slug}`)}
+                        class="group relative block"
+                    >
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted border border-border shadow-md transition-all duration-500 group-hover:shadow-2xl group-hover:border-primary/30 group-hover:-translate-y-2">
+                            <img 
+                                src={member.profileImageUrl || '/placeholder-profile.svg'} 
+                                alt={member.entry.name}
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            
+                            {/* Overlay Gradient */}
+                            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90 transition-opacity duration-300"></div>
+                            
+                            {/* Text Info (Bottom) */}
+                            <div class="absolute bottom-0 left-0 right-0 p-8 transform transition-transform duration-500">
+                                <p class="text-primary text-xs font-bold tracking-widest uppercase mb-2 opacity-80">{member.entry.role}</p>
+                                <h3 class="text-2xl font-bold group-hover:text-primary transition-colors duration-300">{member.entry.name}</h3>
+                                
+                                <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-2 text-xs font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                    <span>View Profile</span>
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+				))}
+			</div>
+
+            {teams.length === 0 && (
+                <div class="text-center py-20 border border-dashed rounded-3xl bg-muted/30">
+                    <p class="text-xl text-muted-foreground">The team will be introduced here soon.</p>
+                </div>
+            )}
+		</div>
+	</section>
+</Layout>

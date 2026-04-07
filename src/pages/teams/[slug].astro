@@ -1,0 +1,174 @@
+---
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
+import Layout from '../../layouts/main.astro';
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro';
+import { Mail, Linkedin, GraduationCap, Award, User, ArrowLeft, ArrowRight } from 'lucide-react';
+import { withBase, cn } from "@/lib/utils";
+import { GradientText } from '@/components/GradientText';
+
+export async function getStaticPaths() {
+	const reader = createReader(process.cwd(), keystaticConfig);
+	const teams = await reader.collections.teams.all();
+	return teams.map((member) => ({
+		params: { slug: member.slug },
+		props: { member },
+	}));
+}
+
+const { member } = Astro.props;
+const { entry } = member;
+
+// Resolve Markdoc content
+const biodata = await entry.biodata();
+const education = await entry.education();
+const expertise = await entry.expertise();
+
+// Resolve image
+import { getImage } from 'astro:assets';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/teams/*');
+const resolveImage = async (imagePath: string | undefined) => {
+	if (!imagePath) return null;
+	const key = imagePath.replace('@/', '/src/');
+	const loader = images[key];
+	if (!loader) return null;
+	const mod = await loader();
+	const optimized = await getImage({ src: mod.default, format: 'webp', width: 800 });
+	return optimized.src;
+};
+
+const profileImageUrl = await resolveImage(entry.profileImage || undefined);
+---
+
+<Layout title={`${entry.name} | Professional Profile | Wijaya Partners`}>
+	<section class="relative pt-20 pb-20 md:pt-40 md:pb-32 bg-background overflow-hidden">
+        {/* Header Background Effects */}
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent -z-10"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2 -z-10"></div>
+
+		<div class="container mx-auto px-4 relative">
+			{/* Breadcrumb / Back Link */}
+			<a 
+				href={withBase("/teams")}
+				class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-muted-foreground hover:text-primary transition-all mb-12 uppercase group"
+			>
+				<ArrowLeft class="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
+				Back to All Team Members
+			</a>
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+				
+				{/* Image Column */}
+				<div class="lg:col-span-5 relative group">
+					<div class="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-3xl border border-border shadow-2xl bg-muted ring-1 ring-white/5">
+						<img 
+							src={profileImageUrl || "/placeholder-profile.svg"} 
+							alt={entry.name}
+							class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+						/>
+						<div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
+					</div>
+					
+					{/* Contact Floater (Desktop only) */}
+					<div class="hidden md:flex absolute -bottom-6 -right-6 p-6 rounded-2xl bg-card border border-border shadow-xl space-x-6 backdrop-blur-xl ring-1 ring-white/10 z-20">
+						{entry.email && (
+							<a href={`mailto:${entry.email}`} title={entry.email} class="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-300">
+								<Mail class="h-6 w-6" />
+							</a>
+						)}
+						{entry.linkedin && (
+							<a href={entry.linkedin} target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-300">
+								<Linkedin class="h-6 w-6" />
+							</a>
+						)}
+					</div>
+				</div>
+
+				{/* Info Column */}
+				<div class="lg:col-span-7 pt-4">
+					<div class="mb-12">
+						<p class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 leading-none">{entry.role}</p>
+						<h1 class="text-5xl lg:text-7xl font-extrabold tracking-tighter mb-8 leading-tight">
+                            <GradientText>{entry.name.split(',')[0]}</GradientText>
+                            {entry.name.includes(',') && <span class="text-foreground/30 opacity-60">, {entry.name.split(',').slice(1).join(',')}</span>}
+                        </h1>
+					</div>
+
+					<div class="space-y-16">
+						{/* Biodata Mini Section */}
+						{biodata && (
+							<div class="prose prose-lg dark:prose-invert max-w-none prose-p:leading-relaxed prose-p:text-muted-foreground prose-strong:text-foreground">
+								<MarkdocRenderer node={biodata} />
+							</div>
+						)}
+
+						{/* Quick Stats Grid */}
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-border pt-12">
+							{education && (
+								<div class="space-y-4">
+									<div class="flex items-center gap-2 text-foreground font-bold text-sm tracking-widest uppercase mb-1">
+										<GraduationCap class="h-4 w-4 text-primary" />
+										Pendidikan
+									</div>
+									<div class="text-sm text-muted-foreground">
+										<MarkdocRenderer node={education} />
+									</div>
+								</div>
+							)}
+							{expertise && (
+								<div class="space-y-4">
+									<div class="flex items-center gap-2 text-foreground font-bold text-sm tracking-widest uppercase mb-1">
+										<Award class="h-4 w-4 text-primary" />
+										Keahlian Utama
+									</div>
+									<div class="text-sm text-muted-foreground leading-relaxed">
+										<MarkdocRenderer node={expertise} />
+									</div>
+								</div>
+							)}
+						</div>
+
+						{/* Mobile Contact Buttons */}
+						<div class="flex md:hidden flex-wrap gap-4 pt-8 border-t border-border">
+							{entry.email && (
+								<a href={`mailto:${entry.email}`} class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm w-full transition-transform active:scale-95">
+									<Mail class="h-4 w-4" />
+									Hubungi Email
+								</a>
+							)}
+							{entry.linkedin && (
+								<a href={entry.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border bg-card font-semibold text-sm w-full transition-transform active:scale-95">
+									<Linkedin class="h-4 w-4" />
+									LinkedIn Profile
+								</a>
+							)}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style is:global>
+    /* Premium details */
+    .prose ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .prose li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    .prose li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 0.5rem;
+        height: 1px;
+        background-color: theme('colors.primary.DEFAULT');
+        opacity: 0.5;
+    }
+</style>

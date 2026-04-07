@@ -1,0 +1,63 @@
+---
+import MarkdocPkg from '@markdoc/markdoc';
+const Markdoc = (MarkdocPkg as any).default || MarkdocPkg;
+
+interface Props {
+  node: any;
+}
+
+const { node: inputNode } = Astro.props;
+
+if (!inputNode) {
+  return '';
+}
+
+let html = '';
+try {
+  // Handle Keystatic wrapping if any (sometimes it's { node: ... })
+  let node = inputNode.node ? inputNode.node : inputNode;
+  
+  let ast = node;
+  if (typeof node === 'string') {
+    ast = Markdoc.parse(node);
+  } else if (Array.isArray(node)) {
+    ast = {
+      $$mdtype: 'Tag',
+      name: 'article',
+      children: node,
+      attributes: {}
+    };
+  } else if (node && typeof node === 'object' && !node.resolve) {
+    // If it's a plain object that looks like an AST, we might need to "un-plain" it 
+    // or just ensure it has a type if transform expects it.
+    // Actually, Markdoc transformer can work on plain objects IF they match the Node structure.
+    // But if it fails with .resolve, we try to use a wrapper.
+    ast = node;
+  }
+  
+  const transformed = Markdoc.transform(ast);
+  html = Markdoc.renderers.html(transformed);
+} catch (e) {
+  // If transform fails due to missing .resolve, try to manually render children if it's a doc
+  try {
+    const fallbackNode = inputNode.node || inputNode;
+    if (fallbackNode && fallbackNode.children) {
+      // Very crude fallback for plain AST objects
+      const transformed = Markdoc.transform({
+        $$mdtype: 'Tag',
+        name: 'article',
+        children: fallbackNode.children,
+        attributes: {}
+      });
+      html = Markdoc.renderers.html(transformed);
+    } else {
+        throw e;
+    }
+  } catch (innerError) {
+    console.error('MarkdocRenderer Final Error:', innerError);
+    html = typeof inputNode === 'string' ? inputNode : 'Content unavailable';
+  }
+}
+---
+
+<div class="prose prose-lg dark:prose-invert max-w-none" set:html={html} />
