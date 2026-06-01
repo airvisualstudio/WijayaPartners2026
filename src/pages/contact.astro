@@ -16,7 +16,7 @@ const contactData = await reader.singletons.contact.read();
 				<div class="text-center space-y-4 mb-16 px-4">
 					<h1 class="text-4xl md:text-7xl font-extrabold tracking-tighter">
 						{contactData?.heading.split(' ').slice(0, -1).join(' ')}
-						<span class="bg-gradient-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent animate-gradient">
+						<span class="bg-gradient-to-r from-zinc-950 via-red-600 to-zinc-950 dark:from-white dark:via-red-500 dark:to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
 							 {contactData?.heading.split(' ').pop()}
 						</span>
 					</h1>
@@ -30,72 +30,75 @@ const contactData = await reader.singletons.contact.read();
 					<div class="lg:col-span-8 order-2 lg:order-1">
 						<div class="p-8 md:p-12 rounded-3xl border bg-card/50 backdrop-blur-sm shadow-xl">
 							<h2 class="text-2xl font-bold mb-8">Send us a message</h2>
-							<form class="space-y-6">
-								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div id="form-container">
+								<form id="contact-form" class="space-y-6">
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+										<div class="space-y-2">
+											<label for="name" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
+												Name
+											</label>
+											<input
+												type="text"
+												id="name"
+												name="name"
+												class="flex h-12 w-full rounded-xl border bg-background/50 px-4 py-2 text-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none"
+												placeholder="Your full name"
+												required
+											/>
+										</div>
+										<div class="space-y-2">
+											<label for="email" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
+												Email
+											</label>
+											<input
+												type="email"
+												id="email"
+												name="email"
+												class="flex h-12 w-full rounded-xl border bg-background/50 px-4 py-2 text-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none"
+												placeholder="email@example.com"
+												required
+											/>
+										</div>
+									</div>
+
 									<div class="space-y-2">
-										<label for="name" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
-											Name
+										<label for="subject" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
+											Subject
 										</label>
 										<input
 											type="text"
-											id="name"
-											name="name"
+											id="subject"
+											name="subject"
 											class="flex h-12 w-full rounded-xl border bg-background/50 px-4 py-2 text-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none"
-											placeholder="Your full name"
+											placeholder="What is this regarding?"
 											required
 										/>
 									</div>
+
 									<div class="space-y-2">
-										<label for="email" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
-											Email
+										<label for="message" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
+											Message
 										</label>
-										<input
-											type="email"
-											id="email"
-											name="email"
-											class="flex h-12 w-full rounded-xl border bg-background/50 px-4 py-2 text-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none"
-											placeholder="email@example.com"
+										<textarea
+											id="message"
+											name="message"
+											rows="6"
+											class="flex w-full rounded-xl border bg-background/50 px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none resize-none"
+											placeholder="Tell us how we can assist you..."
 											required
-										/>
+										></textarea>
 									</div>
-								</div>
 
-								<div class="space-y-2">
-									<label for="subject" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
-										Subject
-									</label>
-									<input
-										type="text"
-										id="subject"
-										name="subject"
-										class="flex h-12 w-full rounded-xl border bg-background/50 px-4 py-2 text-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none"
-										placeholder="What is this regarding?"
-										required
-									/>
-								</div>
-
-								<div class="space-y-2">
-									<label for="message" class="text-sm font-bold tracking-widest uppercase text-muted-foreground ml-1">
-										Message
-									</label>
-									<textarea
-										id="message"
-										name="message"
-										rows="6"
-										class="flex w-full rounded-xl border bg-background/50 px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none resize-none"
-										placeholder="Tell us how we can assist you..."
-										required
-									></textarea>
-								</div>
-
-								<button
-									type="submit"
-									class="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20 w-full md:w-auto"
-								>
-									<Send class="h-5 w-5" />
-									Submit Inquiry
-								</button>
-							</form>
+									<button
+										type="submit"
+										id="submit-btn"
+										class="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20 w-full md:w-auto"
+									>
+										<Send class="h-5 w-5" />
+										Submit Inquiry
+									</button>
+								</form>
+							</div>
 						</div>
 					</div>
 
@@ -187,3 +190,85 @@ const contactData = await reader.singletons.contact.read();
 		</div>
 	</section>
 </Layout>
+
+<script>
+	const form = document.getElementById('contact-form') as HTMLFormElement | null;
+	const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+	
+	if (form && submitBtn) {
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			
+			// Disable submit button and set sending state
+			submitBtn.disabled = true;
+			const originalHtml = submitBtn.innerHTML;
+			submitBtn.innerHTML = `
+				<svg class="animate-spin h-5 w-5 mr-3 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+					<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+				</svg>
+				Sending...
+			`;
+			
+			const formData = new FormData(form);
+			const payload = {
+				name: formData.get('name'),
+				email: formData.get('email'),
+				subject: formData.get('subject'),
+				message: formData.get('message'),
+			};
+			
+			try {
+				const response = await fetch('/api/contact', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(payload)
+				});
+				
+				const result = await response.json();
+				
+				if (response.ok && result.success) {
+					const formContainer = document.getElementById('form-container');
+					if (formContainer) {
+						formContainer.innerHTML = `
+							<div class="text-center py-12 px-6 flex flex-col items-center justify-center space-y-6 animate-fade-in">
+								<div class="h-20 w-20 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center shadow-lg shadow-emerald-500/10">
+									<svg class="h-10 w-10 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+									</svg>
+								</div>
+								<div class="space-y-2">
+									<h3 class="text-2xl font-bold">Message Sent Successfully!</h3>
+									<p class="text-muted-foreground text-sm max-w-md mx-auto">
+										Thank you for reaching out. We have received your inquiry and our team will get back to you as soon as possible.
+									</p>
+								</div>
+								<button id="reset-form-btn" class="mt-6 inline-flex items-center justify-center h-12 px-8 rounded-full border border-border bg-card hover:bg-muted font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-md">
+									Send Another Message
+								</button>
+							</div>
+						`;
+						
+						const resetBtn = document.getElementById('reset-form-btn');
+						if (resetBtn) {
+							resetBtn.addEventListener('click', () => {
+								window.location.reload();
+							});
+						}
+					}
+				} else {
+					alert(result.error || 'Something went wrong. Please try again.');
+					submitBtn.disabled = false;
+					submitBtn.innerHTML = originalHtml;
+				}
+			} catch (error) {
+				console.error(error);
+				alert('An error occurred. Please try again later.');
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = originalHtml;
+			}
+		});
+	}
+</script>

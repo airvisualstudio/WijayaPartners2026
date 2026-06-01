@@ -4,13 +4,14 @@ import keystaticConfig from '../../../keystatic.config';
 import Layout from '../../layouts/main.astro';
 import { GradientText } from '@/components/GradientText';
 import { withBase } from "@/lib/utils";
+import { User } from 'lucide-react';
 
 const reader = createReader(process.cwd(), keystaticConfig);
 const teams = await reader.collections.teams.all();
 
 import { getImage } from 'astro:assets';
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/teams/*');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/teams/**/*');
 
 const resolveImage = async (imagePath: string | undefined) => {
   if (!imagePath) return null;
@@ -62,11 +63,17 @@ const resolvedTeams = await Promise.all(
                         class="group relative block"
                     >
                         <div class="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted border border-border shadow-md transition-all duration-500 group-hover:shadow-2xl group-hover:border-primary/30 group-hover:-translate-y-2">
-                            <img 
-                                src={member.profileImageUrl || '/placeholder-profile.svg'} 
-                                alt={member.entry.name}
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
+                            {member.profileImageUrl ? (
+                                <img 
+                                    src={member.profileImageUrl} 
+                                    alt={member.entry.name}
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                            ) : (
+                                <div class="w-full h-full bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center transition-all duration-500 group-hover:scale-105">
+                                    <User class="w-24 h-24 text-zinc-400 dark:text-zinc-600 transition-colors duration-500 group-hover:text-primary/40" />
+                                </div>
+                            )}
                             
                             {/* Overlay Gradient */}
                             <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90 transition-opacity duration-300"></div>

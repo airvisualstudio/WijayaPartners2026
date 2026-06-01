@@ -74,6 +74,7 @@ export default {
       },
       animation: {
         marquee: 'marquee 30s linear infinite',
+        'marquee-reverse': 'marquee 30s linear infinite reverse',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

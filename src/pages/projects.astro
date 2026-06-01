@@ -1,0 +1,38 @@
+---
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
+import Layout from '../layouts/main.astro';
+import { ProjectsSection } from '@/components/ProjectsSection';
+import { getImage } from 'astro:assets';
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const clientsData = await reader.collections.clients.all();
+
+// Load and optimize client logos
+const clientImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/clients/**/*.{jpeg,jpg,png,gif,webp,svg}');
+const clientLogos = await Promise.all(
+  clientsData.map(async (client) => {
+    const rawPath = client.entry.logo;
+    let logoUrl = '';
+    if (rawPath) {
+      const key = rawPath.replace('@/', '/src/');
+      const loader = clientImages[key];
+      if (loader) {
+        const mod = await loader();
+        const optimized = await getImage({ src: mod.default, format: 'webp', width: 250 });
+        logoUrl = optimized.src;
+      } else {
+        console.warn(`Client logo not found: ${rawPath} (key: ${key})`);
+      }
+    }
+    return {
+      name: client.entry.name,
+      logo: logoUrl || rawPath || '',
+    };
+  })
+);
+---
+
+<Layout title="Our Clients & Projects - Wijaya Partners" fullScreen={false} noPadding={false}>
+    <ProjectsSection clients={clientLogos} client:load />
+</Layout>

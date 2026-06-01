@@ -40,6 +40,10 @@ export default config({
             schema: {
                 heading: fields.text({ label: 'Heading' }),
                 subheading: fields.text({ label: 'Subheading', multiline: true }),
+                receiverEmail: fields.text({ 
+                    label: 'Receiver Email Address',
+                    description: 'Email address that will receive inquiries submitted through the contact form.'
+                }),
                 email1: fields.text({ label: 'Email 1' }),
                 email2: fields.text({ label: 'Email 2' }),
                 phone: fields.text({ label: 'Phone' }),
@@ -81,6 +85,35 @@ export default config({
                 biodata: fields.markdoc({ label: 'Detailed Biodata' }),
                 email: fields.text({ label: 'Email Address' }),
                 linkedin: fields.text({ label: 'LinkedIn URL' }),
+            },
+        }),
+        clients: collection({
+            label: 'Clients',
+            slugField: 'name',
+            path: 'src/content/clients/*',
+            format: { data: 'json' },
+            schema: {
+                name: fields.slug({ name: { label: 'Client Name' } }),
+                logo: fields.image({
+                    label: 'Client Logo',
+                    directory: 'src/assets/clients',
+                    publicPath: '@/assets/clients',
+                    validation: { isRequired: true }
+                }),
+            },
+        }),
+        inquiries: collection({
+            label: 'Inquiries',
+            slugField: 'id',
+            path: 'src/content/inquiries/*',
+            format: { data: 'json' },
+            schema: {
+                id: fields.text({ label: 'ID' }),
+                name: fields.text({ label: 'Name' }),
+                email: fields.text({ label: 'Email' }),
+                subject: fields.text({ label: 'Subject' }),
+                message: fields.text({ label: 'Message', multiline: true }),
+                date: fields.text({ label: 'Submitted At' }),
             },
         }),
     },

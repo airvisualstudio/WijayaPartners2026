@@ -4,7 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CommandPalette } from '@/components/CommandPalette';
 import { CookieConsent } from '@/components/CookieConsent';
-const { title = "WijayaPartners - ", fullScreen = false } = Astro.props;
+const { title = "WijayaPartners - ", fullScreen = false, noPadding = false } = Astro.props;
 import { SEOMetadata } from 'astro-seo-metadata';
 import WhatsAppButton from '@/components/WhatsAppButton.astro';
 import { getEntry } from 'astro:content';
@@ -58,7 +58,7 @@ if (logoSetting) {
 	</head>
 	<body class={fullScreen ? "h-screen overflow-hidden flex flex-col" : "min-h-screen flex flex-col"}>
 		<Header client:load logo={logo} />
-		<main class={fullScreen ? "flex-grow overflow-hidden relative" : "flex-grow relative pt-32"}>
+		<main class={fullScreen ? "flex-grow overflow-hidden relative" : `flex-grow relative ${noPadding ? "" : "pt-32"}`}>
 			<slot />
 			<WhatsAppButton />
 		</main>

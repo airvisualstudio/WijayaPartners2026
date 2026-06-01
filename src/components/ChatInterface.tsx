@@ -186,7 +186,7 @@ export function ChatInterface() {
         </div>
         <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
           <Sparkles className="h-3 w-3" />
-          Powered by GenAI • Press Enter to send
+          Powered by Wijaya Partners • Press Enter to send
         </p>
       </div>
     </div>

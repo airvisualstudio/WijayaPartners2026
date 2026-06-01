@@ -27,7 +27,7 @@ export function Header({ logo = logoDefault.src }: HeaderProps) {
   const navItems = [
     { label: "About", href: withBase("/#about") },
     { label: "Our Teams", href: withBase("/teams") },
-    { label: "Our Projects", href: withBase("/#projects") },
+    { label: "Our Projects", href: withBase("/projects") },
     { label: "Contact", href: withBase("/contact") },
   ];
 

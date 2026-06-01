@@ -255,7 +255,7 @@ const logos = [
         <div className="p-8 rounded-2xl border bg-card space-y-4">
           <h3 className="text-4xl font-bold">
             Build with{" "}
-            <GradientText>GenAI</GradientText>
+            <GradientText>Wijaya Partners</GradientText>
           </h3>
           <h3 className="text-4xl font-bold">
             Powered by{" "}

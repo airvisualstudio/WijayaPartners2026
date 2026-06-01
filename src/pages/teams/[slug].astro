@@ -26,7 +26,7 @@ const expertise = await entry.expertise();
 
 // Resolve image
 import { getImage } from 'astro:assets';
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/teams/*');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/teams/**/*');
 const resolveImage = async (imagePath: string | undefined) => {
 	if (!imagePath) return null;
 	const key = imagePath.replace('@/', '/src/');
@@ -61,11 +61,17 @@ const profileImageUrl = await resolveImage(entry.profileImage || undefined);
 				{/* Image Column */}
 				<div class="lg:col-span-5 relative group">
 					<div class="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-3xl border border-border shadow-2xl bg-muted ring-1 ring-white/5">
-						<img 
-							src={profileImageUrl || "/placeholder-profile.svg"} 
-							alt={entry.name}
-							class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
-						/>
+						{profileImageUrl ? (
+							<img 
+								src={profileImageUrl} 
+								alt={entry.name}
+								class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+							/>
+						) : (
+							<div class="w-full h-full bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center transition-all duration-500 group-hover:scale-105">
+								<User class="w-32 h-32 text-zinc-400 dark:text-zinc-600 transition-colors duration-500 group-hover:text-primary/40" />
+							</div>
+						)}
 						<div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
 					</div>
 					
@@ -108,7 +114,7 @@ const profileImageUrl = await resolveImage(entry.profileImage || undefined);
 								<div class="space-y-4">
 									<div class="flex items-center gap-2 text-foreground font-bold text-sm tracking-widest uppercase mb-1">
 										<GraduationCap class="h-4 w-4 text-primary" />
-										Pendidikan
+										Education
 									</div>
 									<div class="text-sm text-muted-foreground">
 										<MarkdocRenderer node={education} />
@@ -119,7 +125,7 @@ const profileImageUrl = await resolveImage(entry.profileImage || undefined);
 								<div class="space-y-4">
 									<div class="flex items-center gap-2 text-foreground font-bold text-sm tracking-widest uppercase mb-1">
 										<Award class="h-4 w-4 text-primary" />
-										Keahlian Utama
+										Key Expertise
 									</div>
 									<div class="text-sm text-muted-foreground leading-relaxed">
 										<MarkdocRenderer node={expertise} />
@@ -133,7 +139,7 @@ const profileImageUrl = await resolveImage(entry.profileImage || undefined);
 							{entry.email && (
 								<a href={`mailto:${entry.email}`} class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm w-full transition-transform active:scale-95">
 									<Mail class="h-4 w-4" />
-									Hubungi Email
+									Contact Email
 								</a>
 							)}
 							{entry.linkedin && (

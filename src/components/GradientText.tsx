@@ -13,10 +13,10 @@ interface GradientTextProps {
 export function GradientText({
   children,
   className,
-  from = "from-purple-600",
-  via,
-  to = "to-pink-600",
-  animate = false,
+  from = "from-zinc-950",
+  via = "via-red-600",
+  to = "to-zinc-950",
+  animate = true,
 }: GradientTextProps) {
   const gradientClass = via
     ? `bg-gradient-to-r ${from} ${via} ${to}`
@@ -28,7 +28,7 @@ export function GradientText({
         gradientClass,
         "bg-clip-text text-transparent",
         animate && "animate-gradient bg-[length:200%_auto]",
-        "dark:from-purple-400 dark:to-pink-400",
+        "dark:from-white dark:via-red-500 dark:to-white",
         className
       )}
     >
