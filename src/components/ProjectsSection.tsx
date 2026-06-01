@@ -33,7 +33,7 @@ export function ProjectsSection({ clients }: ProjectsSectionProps) {
   };
 
   return (
-    <section id="projects" className="py-24 md:py-36 border-t bg-gradient-to-b from-background via-muted/5 to-background relative overflow-hidden">
+    <section id="projects" className="py-24 md:py-36 bg-gradient-to-b from-background via-muted/5 to-background relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-red-500/5 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10" />
       <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-zinc-500/5 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -z-10" />

@@ -195,3 +195,10 @@
   width: 10px;
   height: 10px;
 }
+/* Lucide icons hover invert in dark mode */
+.lucide {
+  @apply transition-colors;
+}
+.dark .lucide:hover {
+  filter: invert(1);
+}
