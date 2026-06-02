@@ -42,6 +42,17 @@ export default config({
                         itemLabel: props => props.fields.label.value || 'Menu Item',
                     }
                 ),
+                teamOrder: fields.array(
+                    fields.relationship({
+                        label: 'Team Member',
+                        collection: 'teams',
+                    }),
+                    {
+                        label: 'Team Sorting Order',
+                        description: 'Drag and drop to sort team members on the team page. Members not listed will be placed at the end.',
+                        itemLabel: props => props.value || 'Select a team member',
+                    }
+                ),
             },
         }),
         contact: singleton({

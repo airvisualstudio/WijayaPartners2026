@@ -21,6 +21,7 @@ const settings = defineCollection({
                 href: z.string(),
             })
         ).optional(),
+        teamOrder: z.array(z.string()).optional(),
     }),
 });
 
