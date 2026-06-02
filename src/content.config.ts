@@ -15,6 +15,12 @@ const settings = defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx,yaml,yml}", base: "src/content/settings" }),
     schema: z.object({
         logo: z.string().optional(),
+        menuItems: z.array(
+            z.object({
+                label: z.string(),
+                href: z.string(),
+            })
+        ).optional(),
     }),
 });
 

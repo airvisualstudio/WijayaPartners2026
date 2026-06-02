@@ -1,1 +1,10 @@
 logo: '@/assets/logo/logo.webp'
+menuItems:
+  - label: About
+    href: /#about
+  - label: Our Team
+    href: /teams
+  - label: Our Projects
+    href: /projects
+  - label: Contact
+    href: /contact

@@ -6,11 +6,17 @@ import { withBase } from "@/lib/utils";
 
 import logoDefault from "@/assets/logo-wijaya.svg";
 
-interface HeaderProps {
-  logo?: string;
+interface MenuItem {
+  label: string;
+  href: string;
 }
 
-export function Header({ logo = logoDefault.src }: HeaderProps) {
+interface HeaderProps {
+  logo?: string;
+  menuItems?: MenuItem[];
+}
+
+export function Header({ logo = logoDefault.src, menuItems }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -24,12 +30,19 @@ export function Header({ logo = logoDefault.src }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
+  const defaultNavItems = [
     { label: "About", href: withBase("/#about") },
     { label: "Our Teams", href: withBase("/teams") },
     { label: "Our Projects", href: withBase("/projects") },
     { label: "Contact", href: withBase("/contact") },
   ];
+
+  const navItems = menuItems && menuItems.length > 0
+    ? menuItems.map((item) => ({
+        label: item.label,
+        href: withBase(item.href),
+      }))
+    : defaultNavItems;
 
   return (
     <header

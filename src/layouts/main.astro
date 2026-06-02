@@ -13,6 +13,7 @@ import defaultLogo from '@/assets/logo/logo.svg';
 
 const settings = await getEntry('settings', 'index');
 const logoSetting = settings?.data?.logo;
+const menuItems = settings?.data?.menuItems;
 
 let logo = defaultLogo.src;
 
@@ -57,7 +58,7 @@ if (logoSetting) {
 		<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 	</head>
 	<body class={fullScreen ? "h-screen overflow-hidden flex flex-col" : "min-h-screen flex flex-col"}>
-		<Header client:load logo={logo} />
+		<Header client:load logo={logo} menuItems={menuItems} />
 		<main class={fullScreen ? "flex-grow overflow-hidden relative" : `flex-grow relative ${noPadding ? "" : "pt-32"}`}>
 			<slot />
 			<WhatsAppButton />

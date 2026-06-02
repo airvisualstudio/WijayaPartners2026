@@ -32,6 +32,16 @@ export default config({
                         isRequired: true,
                     },
                 }),
+                menuItems: fields.array(
+                    fields.object({
+                        label: fields.text({ label: 'Label' }),
+                        href: fields.text({ label: 'Link / URL' }),
+                    }),
+                    {
+                        label: 'Menu Items',
+                        itemLabel: props => props.fields.label.value || 'Menu Item',
+                    }
+                ),
             },
         }),
         contact: singleton({
