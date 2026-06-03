@@ -18,6 +18,14 @@ export default config({
                     directory: 'src/assets/hero-images',
                     publicPath: '@/assets/hero-images',
                 }),
+                aboutHeading: fields.text({ label: 'About Heading' }),
+                aboutHeadingHighlight: fields.text({ label: 'About Heading Highlight' }),
+                aboutSubheading: fields.text({ label: 'About Subheading', multiline: true }),
+                aboutBackgroundImage: fields.image({
+                    label: 'About Background Image',
+                    directory: 'src/assets/hero-images',
+                    publicPath: '@/assets/hero-images',
+                }),
             },
         }),
         settings: singleton({

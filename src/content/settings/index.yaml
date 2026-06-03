@@ -1,7 +1,7 @@
 logo: '@/assets/logo/logo.webp'
 menuItems:
   - label: About
-    href: /#about
+    href: /about
   - label: Our Team
     href: /teams
   - label: Our Projects

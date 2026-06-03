@@ -57,9 +57,9 @@ if (logoSetting) {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 	</head>
-	<body class={fullScreen ? "h-screen overflow-hidden flex flex-col" : "min-h-screen flex flex-col"}>
+	<body class={fullScreen ? "lg:h-screen lg:overflow-hidden min-h-screen flex flex-col" : "min-h-screen flex flex-col"}>
 		<Header client:load logo={logo} menuItems={menuItems} />
-		<main class={fullScreen ? "flex-grow overflow-hidden relative" : `flex-grow relative ${noPadding ? "" : "pt-32"}`}>
+		<main class={fullScreen ? "lg:flex-grow lg:overflow-hidden relative flex-grow pt-0 lg:pt-0" : `flex-grow relative ${noPadding ? "" : "pt-0 md:pt-32"}`}>
 			<slot />
 			<WhatsAppButton />
 		</main>

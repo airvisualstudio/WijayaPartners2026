@@ -5,13 +5,14 @@ import { useState, useEffect } from "react";
 import gdMerdeka from "@/assets/gdmerdeka.jpg";
 
 interface HeroProps {
+  id?: string;
   heading?: string;
   headingHighlight?: string;
   subheading?: string;
   backgroundImage?: string | null;
 }
 
-export function Hero({ heading, headingHighlight, subheading, backgroundImage }: HeroProps) {
+export function Hero({ id, heading, headingHighlight, subheading, backgroundImage }: HeroProps) {
   const backgrounds = backgroundImage ? [backgroundImage] : [gdMerdeka.src];
   const [currentBg, setCurrentBg] = useState(0);
 
@@ -23,7 +24,7 @@ export function Hero({ heading, headingHighlight, subheading, backgroundImage }:
   }, [backgrounds.length]);
 
   return (
-    <section className="relative overflow-hidden min-h-[100dvh] flex items-center justify-center w-full">
+    <section id={id} className="relative overflow-hidden min-h-[100dvh] lg:min-h-0 lg:h-full flex flex-col justify-start lg:justify-center w-full pt-52 pb-12 lg:pt-28 lg:pb-4">
       {/* Background Slider */}
       <div className="absolute inset-0 -z-20">
         <AnimatePresence mode="popLayout">

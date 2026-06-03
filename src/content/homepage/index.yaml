@@ -4,4 +4,13 @@ heroSubheading: >-
   Since 1988, Wijaya & Partners has served as a dedicated legal guardian from
   our base in Bandung, providing sophisticated commercial litigation and
   advisory for local enterprises and global partners alike.
-heroBackgroundImage: '@assets/images/hero/heroBackgroundImage.jpg'
+heroBackgroundImage: '@/assets/hero-images/heroBackgroundImage.jpg'
+aboutHeading: About
+aboutHeadingHighlight: Wijaya Partners
+aboutSubheading: >-
+  Established in 1988, Wijaya & Partners has served as a dedicated legal guardian from
+  our base in Bandung, Indonesia. Over the past three decades, we have built a reputation
+  for sophisticated commercial litigation, corporate advisory, and dispute resolution.
+  We blend a deep understanding of local laws, customs, and regulatory frameworks
+  with international professional standards.
+aboutBackgroundImage: '@/assets/hero-images/about.jpg'

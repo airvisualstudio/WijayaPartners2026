@@ -1,37 +1,47 @@
 ---
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
 import Layout from '../layouts/main.astro';
+import { AboutSection } from '@/components/AboutSection';
 import { Shield, Target, Award, Users } from 'lucide-react';
+import { getImage } from 'astro:assets';
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const homepageData = await reader.singletons.homepage.read();
+
+// Load about background image
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/hero-images/*');
+const resolveImage = async (imagePath: string | undefined) => {
+  if (!imagePath) return null;
+  const key = imagePath.replace('@/', '/src/');
+  const loader = images[key];
+  if (!loader) {
+      console.warn(`Image not found for path: ${imagePath} (key: ${key})`);
+      return null;
+  }
+  const mod = await loader();
+  const optimized = await getImage({ src: mod.default, format: 'webp', width: 1920 });
+  return optimized.src;
+};
+const aboutBgImage = await resolveImage(homepageData?.aboutBackgroundImage);
 ---
 
-<Layout title="About Us - Wijaya Partners">
-	<section class="py-20 md:py-32">
+<Layout title="About Us - Wijaya Partners" fullScreen={true} noPadding={true}>
+	<AboutSection 
+		id="about"
+		client:load 
+		heading={homepageData?.aboutHeading}
+		headingHighlight={homepageData?.aboutHeadingHighlight}
+		subheading={homepageData?.aboutSubheading}
+        backgroundImage={aboutBgImage}
+	/>
+
+	<!--
+	<section class="py-20 md:py-32 bg-background border-t">
 		<div class="container mx-auto px-4">
 			<div class="max-w-4xl mx-auto">
-				<div class="text-center space-y-4 mb-16">
-					<h1 class="text-4xl md:text-6xl font-bold">
-						About{" "}
-						<span class="bg-gradient-to-r from-zinc-950 via-red-600 to-zinc-950 dark:from-white dark:via-red-500 dark:to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-							Wijaya Partners
-						</span>
-					</h1>
-					<p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-						Dedicated legal guardians blending deep local knowledge with global standards since 1988
-					</p>
-				</div>
 
-				<!-- Story Section -->
-				<div class="prose prose-lg dark:prose-invert mx-auto mb-16">
-					<h2>Our Story</h2>
-					<p>
-						Established in 1988, <strong>Wijaya & Partners</strong> has served as a dedicated legal guardian from our base in Bandung, Indonesia. Over the past three decades, we have built a reputation for sophisticated commercial litigation, corporate advisory, and dispute resolution.
-					</p>
-					<p>
-						We blend a deep understanding of local laws, customs, and regulatory frameworks with international professional standards. This unique approach allows us to represent and protect local enterprises and global partners alike in complex, high-stakes legal situations.
-					</p>
-				</div>
-
-				<!-- Values Grid -->
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 					<div class="p-6 rounded-2xl border bg-card">
 						<div class="inline-flex p-3 rounded-xl bg-gradient-to-br from-red-600 to-zinc-800 mb-4">
 							<Shield class="h-6 w-6 text-white" />
@@ -72,39 +82,8 @@ import { Shield, Target, Award, Users } from 'lucide-react';
 						</p>
 					</div>
 				</div>
-
-				<!-- Stats -->
-				<div class="grid grid-cols-3 gap-8 py-12 border-y">
-					<div class="text-center">
-						<div class="text-3xl md:text-4xl font-bold mb-2">35+</div>
-						<p class="text-sm text-muted-foreground">Years of Practice</p>
-					</div>
-					<div class="text-center">
-						<div class="text-3xl md:text-4xl font-bold mb-2">500+</div>
-						<p class="text-sm text-muted-foreground">Successful Cases</p>
-					</div>
-					<div class="text-center">
-						<div class="text-3xl md:text-4xl font-bold mb-2">98%</div>
-						<p class="text-sm text-muted-foreground">Client Retention</p>
-					</div>
-				</div>
-
-				<!-- CTA -->
-				<div class="text-center mt-16">
-					<h2 class="text-2xl md:text-3xl font-bold mb-4">Protect Your Interests</h2>
-					<p class="text-muted-foreground mb-6">
-						Discuss your legal matters with our experienced legal team.
-					</p>
-					<div class="flex flex-col sm:flex-row gap-4 justify-center">
-						<a href="/contact" class="inline-flex items-center justify-center h-10 px-6 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors">
-							Schedule a Consultation
-						</a>
-						<a href="/teams" class="inline-flex items-center justify-center h-10 px-6 rounded-md border bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
-							Meet Our Lawyers
-						</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>
+	-->
 </Layout>

@@ -6,32 +6,15 @@ import { Hero } from '@/components/Hero';
 
 const reader = createReader(process.cwd(), keystaticConfig);
 const homepageData = await reader.singletons.homepage.read();
-
-import { getImage } from 'astro:assets';
-
-// Load hero background image
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/hero-images/*');
-const resolveImage = async (imagePath: string | undefined) => {
-  if (!imagePath) return null;
-  const key = imagePath.replace('@/', '/src/');
-  const loader = images[key];
-  if (!loader) {
-      console.warn(`Image not found for path: ${imagePath} (key: ${key})`);
-      return null;
-  }
-  const mod = await loader();
-  const optimized = await getImage({ src: mod.default, format: 'webp', width: 1920 });
-  return optimized.src;
-};
-const heroBgImage = await resolveImage(homepageData?.heroBackgroundImage);
 ---
 
-<Layout title="Wijaya Partners | Commercial Litigation & Advisory" fullScreen={true}>
+<Layout title="Wijaya Partners | Commercial Litigation & Advisory" fullScreen={true} noPadding={true}>
 	<Hero 
+		id="home"
 		client:load 
 		heading={homepageData?.heroHeading}
 		headingHighlight={homepageData?.heroHeadingHighlight}
 		subheading={homepageData?.heroSubheading}
-        backgroundImage={heroBgImage}
+        backgroundImage="/hero-images/heroBackgroundImage.jpg"
 	/>
 </Layout>
